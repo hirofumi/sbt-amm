@@ -1,0 +1,6 @@
+> amm
+$ exists target/DefaultConfig
+$ delete target/DefaultConfig
+> test:amm
+$ exists target/TestConfig
+$ delete target/TestConfig
