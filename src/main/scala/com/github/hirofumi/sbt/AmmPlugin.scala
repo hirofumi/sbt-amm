@@ -36,7 +36,7 @@ object AmmPlugin extends AutoPlugin {
       ammPredefCode           := None,
       ammSilent               := false,
       ammSourceCommandSupport := false,
-      ammVersion              := (if (scalaBinaryVersion.value == "2.10") "1.0.3" else "1.1.0")
+      ammVersion              := (if (scalaBinaryVersion.value == "2.10") "1.0.3" else "1.1.2")
     ) ++ ammSettings(Compile, Amm) ++ ammSettings(Test, AmmTest)
 
   override def trigger: PluginTrigger =
