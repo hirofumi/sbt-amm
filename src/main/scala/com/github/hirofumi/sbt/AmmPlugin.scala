@@ -85,11 +85,11 @@ object AmmPlugin extends AutoPlugin {
       )
     ) ++ inConfig(ammConf)(
       Defaults.configSettings ++ Classpaths.ivyBaseSettings ++ Seq(
-        (fullClasspath in ammConf) ++=
+        fullClasspath ++=
           Def.taskDyn({
             if ((ammSourceCommandSupport in (conf, amm)).value) {
               Def.task {
-                (updateClassifiers in ammConf).value
+                updateClassifiers.value
                   .configurations
                   .filter(_.configuration.name == conf.name)
                   .flatMap(_.modules)
@@ -105,9 +105,9 @@ object AmmPlugin extends AutoPlugin {
           Seq(
             "com.lihaoyi" % "ammonite" % (ammVersion in (conf, amm)).value cross CrossVersion.full
           ),
-        sourceGenerators in ammConf +=
+        sourceGenerators +=
           Def.task({
-            val file = (sourceManaged in ammConf).value / "amm.scala"
+            val file = sourceManaged.value / "amm.scala"
             IO.write(
               file,
               """package ammonite
